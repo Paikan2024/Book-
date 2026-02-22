@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Board of Kings — Chapters</title>
+  <style>
+    :root{
+      --bg1:#0d0a07; --bg2:#0a0d12; --fg:#fff3e6; --mut:rgba(255,243,230,.72);
+      --max:1100px; --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--font); color:var(--fg);
+      background:
+        radial-gradient(900px 600px at 20% 20%, rgba(255,170,90,.12), transparent 60%),
+        radial-gradient(800px 550px at 80% 30%, rgba(140,200,255,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+    a{color:inherit; text-decoration:none}
+    .top{
+      max-width:var(--max); margin:0 auto; padding:22px 18px 0;
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+    }
+    .title h1{margin:0; font-size:28px; letter-spacing:.3px}
+    .title p{margin:6px 0 0; color:var(--mut); font-size:13px}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{
+      padding:8px 12px; border-radius:999px; font-size:13px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+    .nav a[aria-current="page"]{background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.30)}
+    .shelf{
+      max-width:var(--max); margin:18px auto 40px; padding:18px;
+    }
+    .frame{
+      border-radius:28px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+      padding:18px;
+    }
+    .wood{
+      border-radius:22px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 9px, rgba(255,255,255,.02) 9px 14px);
+      padding:16px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .books{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .book{
+      position:relative;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(0,0,0,.25));
+      padding:16px;
+      overflow:hidden;
+      min-height: 140px;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .book:before{
+      content:"";
+      position:absolute; inset:-80px -80px auto auto;
+      width:180px; height:180px; border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.14), transparent 60%);
+      transform: rotate(15deg);
+      opacity:.9;
+    }
+    .book:hover{transform: translateY(-3px); border-color: rgba(255,255,255,.26)}
+    .tag{
+      display:inline-block; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06);
+    }
+    .book h2{margin:10px 0 8px; font-size:18px}
+    .book p{margin:0; color:var(--mut); font-size:13px; max-width:52ch}
+    .hint{margin:14px 0 0; color:rgba(255,243,230,.55); font-size:12px}
+    .footer{max-width:var(--max); margin:0 auto; padding:0 18px 26px; color:rgba(255,243,230,.55); font-size:12px}
+    @media (max-width: 900px){ .books{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="title">
+      <h1>Chapters</h1>
+      <p>Pick a volume from the shelf. Each opens in a completely different style.</p>
+    </div>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="characters.html">Characters</a>
+      <a href="court.html">Court</a>
+    </div>
+  </div>
+
+  <main class="shelf">
+    <section class="frame">
+      <div class="wood">
+        <div class="books">
+          <a class="book" href="chapter1.html">
+            <span class="tag">VOL I</span>
+            <h2>The Left Flank Holds</h2>
+            <p>A battlefield report—strategy, risk, and the moment a prince becomes a threat.</p>
+            <div class="hint">Open → war-room dossier layout</div>
+          </a>
+
+          <a class="book" href="chapter2.html">
+            <span class="tag">VOL II</span>
+            <h2>Return Without Applause</h2>
+            <p>The road back to court. Praise is cheap. Silence is expensive.</p>
+            <div class="hint">Open → parchment scroll layout</div>
+          </a>
+
+          <a class="book" href="chapter3.html">
+            <span class="tag">VOL III</span>
+            <h2>The Board Reveals Itself</h2>
+            <p>Signals, coded messages, and the first glimpse of the true game.</p>
+            <div class="hint">Open → prophecy terminal layout</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">GitHub Pages tip: set repository → Settings → Pages → Branch: main / root.</div>
+
+  <script>
+    (function(){
+      const here = (location.pathname.split("/").pop() || "chapters.html");
+      document.querySelectorAll(".nav a").forEach(a=>{
+        const t = (a.getAttribute("href")||"").split("/").pop();
+        if(t===here) a.setAttribute("aria-current","page");
+      });
+    })();
+  </script>
+</body>
+</html>
