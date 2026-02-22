@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VOL III — The Board Reveals Itself</title>
+  <style>
+    :root{
+      --bg:#050608; --fg:#d7ffe9; --mut:rgba(215,255,233,.65);
+      --green:#43ff9a; --red:#ff5273; --cyan:#34e7ff;
+      --max: 980px; --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:
+        radial-gradient(900px 650px at 20% 20%, rgba(67,255,154,.14), transparent 60%),
+        radial-gradient(900px 650px at 85% 50%, rgba(52,231,255,.10), transparent 62%),
+        linear-gradient(180deg, #020305, #050608);
+      color:var(--fg); font-family:var(--mono);
+    }
+    a{color:inherit; text-decoration:none}
+    .top{
+      max-width:var(--max); margin:0 auto; padding:18px 14px;
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    .pill{
+      font-size:12px; padding:7px 12px; border-radius:999px;
+      border:1px solid rgba(215,255,233,.22);
+      background: rgba(255,255,255,.03);
+      text-transform:uppercase; letter-spacing:1px;
+    }
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-size:12px; padding:7px 12px; border-radius:999px; border:1px solid rgba(215,255,233,.18); background: rgba(255,255,255,.03)}
+    .terminal{
+      max-width:var(--max); margin:0 auto 34px; padding:0 14px;
+    }
+    .frame{
+      border-radius:22px;
+      border:1px solid rgba(215,255,233,.18);
+      background: rgba(0,0,0,.35);
+      box-shadow: 0 28px 90px rgba(0,0,0,.6);
+      overflow:hidden;
+      position:relative;
+    }
+    .scanline{
+      pointer-events:none;
+      position:absolute; inset:0;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255,255,255,.04) 0px,
+        rgba(255,255,255,.04) 1px,
+        transparent 2px,
+        transparent 6px
+      );
+      opacity:.18;
+      mix-blend-mode: overlay;
+    }
+    .head{
+      padding:12px 14px;
+      border-bottom:1px solid rgba(215,255,233,.14);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      background: linear-gradient(90deg, rgba(67,255,154,.08), rgba(52,231,255,.06));
+    }
+    .dots{display:flex; gap:7px}
+    .dot{width:10px; height:10px; border-radius:999px; opacity:.75}
+    .dot.g{background:var(--green)} .dot.c{background:var(--cyan)} .dot.r{background:var(--red)}
+    .screen{padding:16px 16px 20px; min-height: 60vh}
+    .line{margin:0 0 10px; color:rgba(215,255,233,.85)}
+    .dim{color:var(--mut)}
+    .cursor{
+      display:inline-block; width:10px; height:18px; background: var(--green);
+      vertical-align:middle; margin-left:6px; animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink{50%{opacity:0}}
+    .glitch{
+      position:relative; display:inline-block;
+      text-shadow: 1px 0 rgba(255,82,115,.55), -1px 0 rgba(52,231,255,.55);
+      animation: jitter 1.8s infinite;
+    }
+    @keyframes jitter{
+      0%,100%{transform:translate(0,0)}
+      30%{transform:translate(.6px,-.4px)}
+      60%{transform:translate(-.7px,.5px)}
+    }
+    .kbd{padding:2px 7px; border-radius:8px; border:1px solid rgba(215,255,233,.18); background: rgba(255,255,255,.03)}
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="pill">VOL III • SIGNALS / CODES / MOVES</div>
+    <div class="nav">
+      <a href="chapters.html">← Chapters</a>
+      <a href="characters.html">Characters</a>
+      <a href="court.html">Court</a>
+    </div>
+  </div>
+
+  <main class="terminal">
+    <section class="frame">
+      <div class="head">
+        <div class="dots"><span class="dot r"></span><span class="dot c"></span><span class="dot g"></span></div>
+        <div class="dim">prophecy://board/trace</div>
+      </div>
+      <div class="screen" id="screen">
+        <p class="line"><span class="dim">> connect</span> court.node</p>
+        <p class="line"><span class="dim">> authenticate</span> "witness"</p>
+        <p class="line"><span class="dim">> pull</span> board.moves --recent</p>
+        <p class="line dim">…</p>
+        <p class="line">A move on the field becomes a move in the palace.</p>
+        <p class="line">A hero is a problem when kings are old.</p>
+        <p class="line">The board is not wood. It is <span class="glitch">people</span>.</p>
+        <p class="line dim">Press <span class="kbd">G</span> to generate a new “whisper”.</p>
+        <p class="line"><span class="cursor"></span></p>
+      </div>
+      <div class="scanline" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script>
+    const screen = document.getElementById("screen");
+    const whispers = [
+      "A sealed letter arrives unsealed.",
+      "A feast is planned for a man the court does not want to praise.",
+      "The loudest loyalist is the first to be accused of ambition.",
+      "Three allies meet. Two leave together. One walks home alone.",
+      "A servant repeats a sentence they were never taught.",
+      "A map is replaced overnight—same ink, different borders."
+    ];
+    function addWhisper(){
+      const p = document.createElement("p");
+      p.className = "line";
+      p.innerHTML = "WHISPER: " + whispers[Math.floor(Math.random()*whispers.length)];
+      screen.insertBefore(p, screen.lastElementChild);
+      screen.scrollTop = screen.scrollHeight;
+    }
+    window.addEventListener("keydown", (e)=>{
+      if(e.key.toLowerCase()==="g") addWhisper();
+    });
+  </script>
+</body>
+</html>
