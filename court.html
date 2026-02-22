@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Board of Kings — Court & Whispers</title>
+  <style>
+    :root{
+      --bg:#07070c; --fg:#f1f5ff; --mut:rgba(241,245,255,.68);
+      --max:1100px; --bd:rgba(255,255,255,.12);
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--font); color:var(--fg);
+      background:
+        radial-gradient(900px 650px at 20% 20%, rgba(90,140,255,.14), transparent 58%),
+        radial-gradient(900px 650px at 80% 40%, rgba(255,120,120,.10), transparent 60%),
+        linear-gradient(180deg, #04040a, #07070c);
+    }
+    a{color:inherit; text-decoration:none}
+    header{
+      max-width:var(--max); margin:0 auto; padding:18px 16px 10px;
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+    }
+    h1{margin:0; font-size:26px}
+    .sub{margin:6px 0 0; color:var(--mut); font-size:13px}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-size:13px; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05)}
+    .wrap{max-width:var(--max); margin:0 auto; padding:16px 16px 40px}
+    .panel{
+      border:1px solid var(--bd); border-radius:22px;
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 26px 90px rgba(0,0,0,.55);
+      overflow:hidden;
+      display:grid; grid-template-columns: 1.2fr .8fr;
+      min-height: 520px;
+    }
+    .map{
+      position:relative;
+      background:
+        radial-gradient(600px 400px at 35% 30%, rgba(255,255,255,.06), transparent 62%),
+        linear-gradient(135deg, rgba(0,0,0,.35), rgba(255,255,255,.02));
+      border-right:1px solid rgba(255,255,255,.10);
+    }
+    .node{
+      position:absolute;
+      width: 150px;
+      padding:10px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      cursor:pointer;
+      transition: transform .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .node:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.26)}
+    .node strong{display:block; font-size:13px}
+    .node span{display:block; margin-top:4px; font-size:12px; color:var(--mut)}
+    .lines{position:absolute; inset:0; pointer-events:none}
+    .info{padding:16px}
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      border-radius:18px;
+      padding:14px;
+    }
+    .card h2{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--mut); font-size:13px; line-height:1.55}
+    .tip{margin-top:10px; font-size:12px; color:rgba(241,245,255,.55)}
+    @media (max-width: 980px){
+      .panel{grid-template-columns:1fr}
+      .map{border-right:none; border-bottom:1px solid rgba(255,255,255,.10); min-height:420px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Court & Whispers</h1>
+      <p class="sub">Click nodes to read what the palace is “saying”.</p>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="characters.html">Characters</a>
+      <a href="court.html">Court</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <div class="map" id="map">
+        <svg class="lines" viewBox="0 0 1000 700" preserveAspectRatio="none">
+          <path d="M220,160 C360,90 430,130 520,220" stroke="rgba(255,255,255,.16)" stroke-width="2" fill="none"/>
+          <path d="M520,220 C640,290 720,260 820,180" stroke="rgba(255,255,255,.12)" stroke-width="2" fill="none"/>
+          <path d="M520,220 C560,380 420,420 300,520" stroke="rgba(255,255,255,.12)" stroke-width="2" fill="none"/>
+          <path d="M300,520 C420,600 620,590 740,520" stroke="rgba(255,255,255,.10)" stroke-width="2" fill="none"/>
+        </svg>
+
+        <div class="node" style="left:8%; top:16%;" data-title="The Gatekeepers" data-text="They open the doors—then decide who deserves to be seen.">
+          <strong>The Gatekeepers</strong><span>Access • Invitations</span>
+        </div>
+
+        <div class="node" style="left:40%; top:28%;" data-title="The Board" data-text="Not a table—an agreement between people who don’t trust each other.">
+          <strong>The Board</strong><span>Votes • Favors</span>
+        </div>
+
+        <div class="node" style="left:74%; top:18%;" data-title="The Old Blood" data-text="They survived kings. They plan to survive Musa.">
+          <strong>The Old Blood</strong><span>Legacy • Control</span>
+        </div>
+
+        <div class="node" style="left:18%; top:64%;" data-title="The Servants’ Corridor" data-text="Truth travels faster in silence. The smallest voices carry the sharpest news.">
+          <strong>Servants’ Corridor</strong><span>Rumors • Keys</span>
+        </div>
+
+        <div class="node" style="left:66%; top:64%;" data-title="The Feast Table" data-text="A celebration can be a trap. A toast can be a verdict.">
+          <strong>The Feast Table</strong><span>Honor • Humiliation</span>
+        </div>
+      </div>
+
+      <aside class="info">
+        <div class="card">
+          <h2 id="t">Select a node</h2>
+          <p id="d">The palace speaks in hints. Click any node on the map.</p>
+          <div class="tip">You can replace these whispers with exact lines from your story anytime.</div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const t = document.getElementById("t");
+    const d = document.getElementById("d");
+    document.querySelectorAll(".node").forEach(n=>{
+      n.addEventListener("click", ()=>{
+        t.textContent = n.dataset.title;
+        d.textContent = n.dataset.text;
+      });
+    });
+  </script>
+</body>
+</html>
