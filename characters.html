@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Board of Kings — Characters</title>
+  <style>
+    :root{
+      --bg:#0b0a10; --fg:#f4f0ff; --mut:rgba(244,240,255,.70);
+      --card:rgba(255,255,255,.06); --bd:rgba(255,255,255,.12);
+      --max:1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--fg); font-family:var(--font);
+      background:
+        radial-gradient(900px 650px at 18% 20%, rgba(170,110,255,.16), transparent 58%),
+        radial-gradient(900px 650px at 80% 40%, rgba(255,140,200,.10), transparent 60%),
+        linear-gradient(180deg, #05050a, #0b0a10);
+    }
+    a{color:inherit; text-decoration:none}
+    header{
+      max-width:var(--max); margin:0 auto; padding:18px 16px 8px;
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+    }
+    h1{margin:0; font-size:28px}
+    .sub{margin:6px 0 0; color:var(--mut); font-size:13px}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-size:13px; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05)}
+    .wrap{max-width:var(--max); margin:0 auto; padding:16px}
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .card{
+      border:1px solid var(--bd); border-radius:22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(0,0,0,.22));
+      padding:16px; box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      position:relative; overflow:hidden;
+    }
+    .card:before{
+      content:""; position:absolute; inset:-90px -90px auto auto;
+      width:220px; height:220px; border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.12), transparent 60%);
+      transform: rotate(18deg);
+    }
+    .role{display:inline-block; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+      padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05)}
+    .card h2{margin:10px 0 8px; font-size:18px}
+    .card p{margin:0; color:var(--mut); font-size:13px; max-width:60ch}
+    .meta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; color:rgba(244,240,255,.58); font-size:12px}
+    .meta span{padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18)}
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Characters</h1>
+      <p class="sub">A gallery of pieces on the board (you can rename / expand these).</p>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="characters.html">Characters</a>
+      <a href="court.html">Court</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      <article class="card">
+        <span class="role">Prince</span>
+        <h2>Musa</h2>
+        <p>Wins where he’s expected to fail. The court reads his competence as ambition.</p>
+        <div class="meta"><span>Battle-tested</span><span>Targeted by whispers</span><span>Unpredictable</span></div>
+      </article>
+
+      <article class="card">
+        <span class="role">Court</span>
+        <h2>The Smile of the Palace</h2>
+        <p>Praise is rationed. Silence is a weapon. Each gesture is a vote.</p>
+        <div class="meta"><span>Polished</span><span>Dangerous</span><span>Never honest</span></div>
+      </article>
+
+      <article class="card">
+        <span class="role">Rivals</span>
+        <h2>Hidden Hands</h2>
+        <p>Those who profit from the old order. They fear a prince who can lead men.</p>
+        <div class="meta"><span>Patient</span><span>Networked</span><span>Unseen</span></div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
