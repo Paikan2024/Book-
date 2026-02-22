@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VOL II — Return Without Applause</title>
+  <style>
+    :root{
+      --ink:#241b12;
+      --paper:#f4ead8;
+      --edge:#e7d7b9;
+      --shadow: 0 26px 80px rgba(0,0,0,.35);
+      --max: 920px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 900px at 20% 10%, rgba(255,230,170,.55), transparent 60%),
+        radial-gradient(1100px 900px at 90% 30%, rgba(210,170,120,.35), transparent 60%),
+        linear-gradient(180deg, #2a2119, #1c1510);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    a{color:inherit; text-decoration:none}
+    .top{
+      max-width: var(--max); margin:0 auto; padding:20px 16px;
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      color: rgba(255,255,255,.88);
+    }
+    .top a{
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.18);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size:13px;
+    }
+    .scroll{
+      max-width: var(--max); margin:0 auto 40px; padding:0 16px;
+    }
+    .paper{
+      background: var(--paper);
+      border: 1px solid var(--edge);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .paper:before,.paper:after{
+      content:"";
+      position:absolute; top:0; bottom:0; width:20px;
+      background: linear-gradient(180deg, rgba(0,0,0,.08), transparent 25%, rgba(0,0,0,.08));
+      opacity:.45;
+    }
+    .paper:before{left:0}
+    .paper:after{right:0}
+    .content{padding:26px 26px 18px}
+    h1{margin:0; font-size:30px; letter-spacing:.2px}
+    .sub{margin:8px 0 18px; font-style:italic; opacity:.85}
+    .drop:first-letter{
+      float:left; font-size:58px; line-height:.9; padding: 6px 10px 0 0; font-weight:700;
+    }
+    p{margin: 0 0 14px; font-size: 18px; line-height: 1.65}
+    .divider{
+      height:1px; background: rgba(36,27,18,.22);
+      margin: 18px 0;
+    }
+    .footer{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      padding: 14px 18px;
+      background: rgba(0,0,0,.04);
+      border-top:1px solid rgba(36,27,18,.14);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: rgba(36,27,18,.72);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div style="font-weight:700; letter-spacing:.5px;">VOL II — Return Without Applause</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <a href="chapters.html">← Chapters</a>
+      <a href="chapter3.html">Next →</a>
+    </div>
+  </div>
+
+  <main class="scroll">
+    <article class="paper">
+      <div class="content">
+        <h1>Return Without Applause</h1>
+        <div class="sub">Where the road ends, the real war begins.</div>
+
+        <p class="drop">
+          He returned not as a son welcomed, but as a piece moved too far.
+          The city gates opened—then the silence did.
+        </p>
+
+        <p>
+          In the halls of stone and perfume, victory was recited like poetry,
+          and every word was measured for its weight against his name.
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+          The court smiled with the caution of people who have survived kings.
+          They praised the army, thanked the banners, honored the “fortunate weather.”
+          They did not say: <em>the prince held the line.</em>
+        </p>
+
+        <p>
+          Because a man who can hold a line can also draw a new one.
+        </p>
+      </div>
+
+      <div class="footer">
+        <span>Tip: Replace this text with your exact chapter text from the story whenever you want.</span>
+        <span>VOL II</span>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
